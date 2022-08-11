@@ -136,14 +136,15 @@ int verify(float *cpu_res, float *gpu_res, int length){
     return(err);
 }
 //进行矩阵CPU和GPU运算，并测试结果
-//M，N，K和block_size同上，iterations为计算执行时间时要重复的次数，然后求其平均
+//M，N，K和block_size同上，iterations为计算执行时间时要重复的次数，然后求其平均  
+//iterations are the number of times to be repeated when calculating the execution time, and then the average
 int gemm(const int M, 
          const int N, 
          const int K, 
          const int block_size,
          const int iterations, 
-         sycl::queue &q) {
-//输出信息
+         sycl::queue & q) {
+//输出信息  output
   cout << "Problem size: c(" << M << "," <<  N << ") ="
        << " a(" << M << "," << K << ") *" 
        << " b(" << K << "," << N << ")\n";
@@ -166,10 +167,10 @@ int gemm(const int M,
       C[i] = 0.0f;
       C_host[i] = 0.0f;
   }
-//定义矩阵乘法所要执行的浮点运算规模
+//定义矩阵乘法所要执行的浮点运算规模  Define the size of the floating-point operation
   double flopsPerMatrixMul
       = 2.0 * static_cast<double>(M) * static_cast<double>(N) * static_cast<double>(K);
-//定义GPU和CPU执行时间
+//定义GPU和CPU执行时间  Define GPU and CPU execution time
   double duration_gpu = 0.0f;
   double duration_cpu = 0.0f;
 
@@ -181,7 +182,7 @@ int gemm(const int M,
     /*当前执行次已经超过warmup的次数了，为正常统计的时间，累加到duration_gpu*/
     if(run >= warmup) duration_gpu += duration;
   }
-  /*求解平均gpu运行时间*/
+  /*求解平均gpu运行时间  Solving for average gpu runtime */
   duration_gpu = duration_gpu / iterations;
 
   // CPU compuation and timer 
@@ -202,14 +203,14 @@ int gemm(const int M,
   /*打印错误信息*/
   if(errCode > 0) printf("\nThere are %d errors\n", errCode);
 
-  /*打印矩阵规模及其执行时间*/
+  /*打印矩阵规模及其执行时间 Print matrix size and its execution time*/
   printf("\nGEMM size M = %d, N = %d, K = %d", M, N, K);
   printf("\nWork-Group size = %d * %d, tile_X = %d, tile_Y = %d", block_size, block_size, tileX, tileY);
   printf("\nPerformance Flops = %lf, \n" 
           "GPU Computation Time = %lf (ms); \n"
           "CPU Computaiton Time = %lf (ms); \n", 
           flopsPerMatrixMul, duration_gpu, duration_cpu);
-/*释放空间*/
+/*释放空间 clean space*/
   free(A, q);
   free(B, q);
   free(C, q);
