@@ -10,14 +10,14 @@ GEMM (General Matrix Multiplication) is a classical computationally intensive ap
 
 Team and Project Information
 ----------------------------
-University name: the University of Edinburgh
-Supervisor: Dr Danial Chitnis (email: d.chitnis@ed.ac.uk)
-Student: Zhenchao Qi (email: s2325590@ed.ac.uk)
-Lab: Intel Devcloud 
-GPU  Device：Intel(R) UHD Graphics P630
-CPU  Device：Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz
-Video link: https:
-Report: 
+University name: the University of Edinburgh <br>
+Supervisor: Dr Danial Chitnis (email: d.chitnis@ed.ac.uk) <br>
+Student: Zhenchao Qi (email: s2325590@ed.ac.uk) <br>
+Lab: Intel Devcloud  <br>
+GPU  Device：Intel(R) UHD Graphics P630  <br>
+CPU  Device：Intel(R) Xeon(R) E-2176G CPU @ 3.70GHz <br>
+Video link: https: <br>
+Report:  <br>
 
 Experimental Results
 -----------------------
