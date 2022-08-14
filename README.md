@@ -1,4 +1,4 @@
-Acceleration of General Matrix Multiplicatio on Intel OneAPI
+Acceleration of General Matrix Multiplicatio using SYCL and OneAPI
 ============================================================
 
 Background
